@@ -1,0 +1,31 @@
+<head>
+  <script type="text/javascript">
+  var exports = module.exports;
+    exports.onVisaCheckoutReady = function() {
+    V.init({
+      apikey: "O8Y91XHU8WLI6KRQQF3H21anppcy6CNiepzZW-_J96YwR_VJw",
+      paymentRequest:{
+          currencyCode: "USD",
+          subtotal: "10.00"
+        }
+      }
+    });
+    V.on("payment.success", function(payment)
+      {alert(JSON.stringify(payment)); });
+    V.on("payment.cancel", function(payment)
+      {alert(JSON.stringify(payment)); });
+    V.on("payment.error", function(payment,error)
+      {alert(JSON.stringify(error)); });
+}
+onVisaCheckoutReady();
+</script>
+</head>
+<body>
+<img alt="Visa Checkout" class="v-button" role="button"
+src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png"/>
+<script type="text/javascript"
+src="https://sandbox-assets.secure.checkout.visa.com/
+checkout-widget/resources/js/integration/v1/sdk.js">
+</script>
+</body>
+</html>
