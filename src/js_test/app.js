@@ -108,7 +108,7 @@ updateSocket.on('message', function(wakeword_buffer) {
                 setEverloop(255, 255, 255, 255, 1);
                 break;
 
-            case /MARRIOTT ORDER BREAKFAST.*/.test(str):
+            case /MARRIOTT (ORDER|REQUEST) BREAKFAST.*/.test(str):
                 foodOrder = 'breakfast';
                 break;
 
