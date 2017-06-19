@@ -64,11 +64,13 @@ updateSocket.on('message', function(wakeword_buffer) {
             case /( TO)?( THE)?ROOM.*/.test(str):
                 // Process room payment
                 setEverloop(0, 25, 255, 0, 0.05);
+                speech.say('Charging your ' + foodOrder + ' to your room.');
                 foodOrder = '';
                 break;
             case /VISA( CHECKOUT)?.*/.test(str):
                 // Process VISA checkout
                 setEverloop(140, 255, 75, 0, 0.05);
+                speech.say('Charging your ' + foodOrder + ' to VISA checkout.');
                 foodOrder = '';
                 break;
             default:
