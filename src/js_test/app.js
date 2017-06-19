@@ -113,19 +113,19 @@ updateSocket.on('message', function(wakeword_buffer) {
                 setEverloop(255, 255, 255, 255, 1);
                 break;
 
-            case /MARRIOTT (ORDER|REQUEST) BREAKFAST.*/.test(str):
+            case /MARRIOTT (I WANT|ORDER|REQUEST) BREAKFAST.*/.test(str):
                 foodOrder = 'breakfast';
                 break;
 
-            case /MARRIOTT (ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST.*/.test(str):
+            case /MARRIOTT (I WANT|ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST.*/.test(str):
                 foodOrder = 'continental breakfast';
                 break;
 
-            case /MARRIOTT (ORDER|REQUEST) (LUNCH|LIGHTS).*/.test(str):
+            case /MARRIOTT (I WANT|ORDER|REQUEST) (LUNCH|LIGHTS).*/.test(str):
                 foodOrder = 'lunch';
                 break;
 
-            case /MARRIOTT (ORDER|REQUEST) (DINNER|DIM).*/.test(str):
+            case /MARRIOTT (I WANT|ORDER|REQUEST) (DINNER|DIM).*/.test(str):
                 foodOrder = 'dinner';
                 break;
 
