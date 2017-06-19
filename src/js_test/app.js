@@ -106,7 +106,7 @@ updateSocket.on('message', function(wakeword_buffer) {
             // Ask to charge to VISA or room
             break;
 
-        case /MARRIOTT (ORDER|REQUEST) DINNER/.test(str):
+        case /MARRIOTT (ORDER|REQUEST) (DINNER|DIM)/.test(str):
             speech.say('Ordering dinner.');
             setEverloop(44, 149, 255, 0, 0.05);
             // Ask to charge to VISA or room
