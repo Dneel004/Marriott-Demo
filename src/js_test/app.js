@@ -55,17 +55,28 @@ updateSocket.subscribe('')
 updateSocket.on('message', function(wakeword_buffer) {
     var wakeWordData = new matrixMalosBuilder.WakeWordParams.decode(wakeword_buffer);
     console.log('==> WakeWord Reached:',wakeWordData.wake_word)
+    var str = wakeWordData.wake_word;
 
-    switch(wakeWordData.wake_word) {
-        case "MARRIOTT RING RED":
-            setEverloop(255, 0, 25, 0, 0.05)
+    switch (true) {
+        case /MARRIOTT CALL CONCIERGE.*/.test(str):
+            setEverloop(140, 255, 75, 0, 0.05);
+            speech.say('Calling concierge.');
             break;
-        case "MARRIOTT RING BLUE":
-            setEverloop(0, 25, 255, 0, 0.05)
+
+        case /MARRIOTT CALL (THE)? FRONT DESK.*/.test(str):
+            speech.say('Calling the front desk.');
+            setEverloop(0, 25, 255, 0, 0.05);
             break;
-        case "MARRIOTT RING CLEAR":
-            setEverloop(0, 0, 0, 0, 0)
+
+        case /MARRIOTT CHECKOUT.*/.test(str):
+            speech.say('Checking out.');
+            setEverloop(0, 25, 255, 0, 0.05);
             break;
+
+        case /MARRIOTT RING CLEAR/.test(str):
+            setEverloop(0, 0, 0, 0, 0);
+            break;
+
         default:
             // Marriott: sorry i didn't quite get that
     }
