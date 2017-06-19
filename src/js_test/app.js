@@ -52,74 +52,89 @@ var updateSocket = zmq.socket('sub')
 updateSocket.connect('tcp://' + creator_ip + ':' + (creator_wakeword_base_port + 3))
 updateSocket.subscribe('')
 
+var foodOrder = '';
+
 updateSocket.on('message', function(wakeword_buffer) {
     var wakeWordData = new matrixMalosBuilder.WakeWordParams.decode(wakeword_buffer);
     console.log('==> WakeWord Reached:',wakeWordData.wake_word)
     var str = wakeWordData.wake_word;
 
-    switch (true) {
-        case /MARRIOTT CALL CONCIERGE.*/.test(str):
-            setEverloop(140, 255, 75, 0, 0.05);
-            speech.say('Calling concierge.');
-            break;
+    if (foodOrder != '') {
+        switch (true) {
+            case /( TO)?( THE)?ROOM.*/.test(str):
+                // Process room payment
+                setEverloop(0, 25, 255, 0, 0.05);
+                foodOrder = '';
+                break;
+            case /VISA( CHECKOUT)?.*/.test(str):
+                // Process VISA checkout
+                setEverloop(140, 255, 75, 0, 0.05);
+                foodOrder = '';
+                break;
+            default:
+                speech.say('Sorry, I didn\'t quite get that');
+        }
+    } else {
+        switch (true) {
+            case /MARRIOTT CALL CONCIERGE.*/.test(str):
+                setEverloop(140, 255, 75, 0, 0.05);
+                speech.say('Calling concierge.');
+                break;
 
-        case /MARRIOTT CALL( THE)* FRONT DESK.*/.test(str):
-            speech.say('Calling the front desk.');
-            setEverloop(0, 25, 255, 0, 0.05);
-            break;
+            case /MARRIOTT CALL( THE)* FRONT DESK.*/.test(str):
+                speech.say('Calling the front desk.');
+                setEverloop(0, 25, 255, 0, 0.05);
+                break;
 
-        case /MARRIOTT CHECKOUT.*/.test(str):
-            speech.say('Checking out.');
-            setEverloop(0, 25, 255, 0, 0.05);
-            break;
+            case /MARRIOTT CHECKOUT.*/.test(str):
+                speech.say('Checking out.');
+                setEverloop(0, 25, 255, 0, 0.05);
+                break;
 
-        case /MARRIOTT( TURN)? OFF( THE)* LIGHTS?.*/.test(str):
-            speech.say('Turning off the lights.');
-            setEverloop(0, 0, 0, 0, 0);
-            break;
+            case /MARRIOTT( TURN)? OFF( THE)* LIGHTS?.*/.test(str):
+                speech.say('Turning off the lights.');
+                setEverloop(0, 0, 0, 0, 0);
+                break;
 
-        case /MARRIOTT DIM( THE)* LIGHTS?.*/.test(str):
-            speech.say('Dimming the lights.');
-            setEverloop(127, 127, 127, 127, 0.01);
-            break;
+            case /MARRIOTT DIM( THE)* LIGHTS?.*/.test(str):
+                speech.say('Dimming the lights.');
+                setEverloop(127, 127, 127, 127, 0.01);
+                break;
 
-        case /MARRIOTT( TURN)? ON( THE)* LIGHTS?.*/.test(str):
-            speech.say('Turning on the lights.');
-            setEverloop(255, 255, 255, 255, 1);
-            break;
+            case /MARRIOTT( TURN)? ON( THE)* LIGHTS?.*/.test(str):
+                speech.say('Turning on the lights.');
+                setEverloop(255, 255, 255, 255, 1);
+                break;
 
-        case /MARRIOTT ORDER BREAKFAST.*/.test(str):
-            speech.say('Ordering breakfast.');
-            setEverloop(255, 204, 44, 0, 0.05);
-            // Ask to charge to VISA or room
-            break;
+            case /MARRIOTT ORDER BREAKFAST.*/.test(str):
+                foodOrder = 'breakfast';
+                break;
 
-        case /MARRIOTT (ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST.*/.test(str):
-            speech.say('Ordering the continental breakfast.');
-            setEverloop(255, 204, 44, 0, 0.05);
-            // Ask to charge to VISA or room
-            break;
+            case /MARRIOTT (ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST.*/.test(str):
+                foodOrder = 'continental breakfast';
+                break;
 
-        case /MARRIOTT (ORDER|REQUEST) (LUNCH|LIGHTS).*/.test(str):
-            speech.say('Ordering lunch.');
-            setEverloop(255, 75, 44, 0, 0.05);
-            // Ask to charge to VISA or room
-            break;
+            case /MARRIOTT (ORDER|REQUEST) (LUNCH|LIGHTS).*/.test(str):
+                foodOrder = 'lunch';
+                break;
 
-        case /MARRIOTT (ORDER|REQUEST) (DINNER|DIM).*/.test(str):
-            speech.say('Ordering dinner.');
-            setEverloop(44, 149, 255, 0, 0.05);
-            // Ask to charge to VISA or room
-            break;
+            case /MARRIOTT (ORDER|REQUEST) (DINNER|DIM).*/.test(str):
+                foodOrder = 'dinner';
+                break;
 
-        case /MARRIOTT (ORDER|REQUEST) TOWELS.*/.test(str):
-            speech.say('Ordering towels.');
-            setEverloop(255, 75, 255, 0, 0.05);
-            // Ask to charge to VISA or room
-            break;
+            case /MARRIOTT (ORDER|REQUEST) TOWELS.*/.test(str):
+                speech.say('Ordering towels.');
+                setEverloop(255, 75, 255, 0, 0.05);
+                // Ask to charge to VISA or room
+                break;
 
-        default:
-            // Marriott: sorry i didn't quite get that
+            default:
+                // Marriott: sorry i didn't quite get that
+
+            if (foodOrder != '') {
+                speech.say('Would you like to charge your ' + foodOrder + ' to the room or VISA checkout?');
+            }
+        }
     }
 });
 
