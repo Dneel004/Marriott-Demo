@@ -1,6 +1,9 @@
 marriott
 order
-continental breakfast
+continental
+breakfast
+lunch
+dinner
 room service
 call
 concierge
@@ -30,3 +33,6 @@ at
 am
 pm
 restaurant
+wake
+me
+up
