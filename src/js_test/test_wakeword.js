@@ -38,8 +38,8 @@ function startWakeUpRecognition(){
   console.log('<== config wakeword recognition..')
   var wakeword_config = new matrixMalosBuilder.WakeWordParams;
   wakeword_config.set_wake_word("MARRIOTT");
-  wakeword_config.set_lm_path("../../assets/commands.lm");
-  wakeword_config.set_dic_path("../../assets/commands.dic");
+  wakeword_config.set_lm_path("/home/pi/Marriott-Demo/assets/7719.lm");
+  wakeword_config.set_dic_path("/home/pi/Marriott-Demo/assets/7719.dic");
   wakeword_config.set_channel(matrixMalosBuilder.WakeWordParams.MicChannel.channel8);
   wakeword_config.set_enable_verbose(false)
   sendConfigProto(wakeword_config);
