@@ -1,17 +1,15 @@
-marriott
-order
-continental breakfast
-room service
-call
-concierge
-front desk
-turn
-on
-off
-dim
-the
-lights
-checkout
-request
-towels
-reserve a table at 5 pm at the restaurant
+marriott order the continental breakfast
+marriott order continental breakfast
+marriott order room service
+marriott call concierge
+marriott call front desk
+marriott call the front desk
+marriott turn on lights
+marriott turn on the lights
+marriott turn off lights
+marriott turn off the lights
+marriott dim lights
+marriott dim the lights
+marriott checkout
+marriott request towels
+marriott reserve a table at 5 pm at the restaurant
