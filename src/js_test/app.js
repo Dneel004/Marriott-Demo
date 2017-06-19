@@ -63,7 +63,7 @@ updateSocket.on('message', function(wakeword_buffer) {
             speech.say('Calling concierge.');
             break;
 
-        case /MARRIOTT CALL (THE)? FRONT DESK.*/.test(str):
+        case /MARRIOTT CALL (THE)* FRONT DESK.*/.test(str):
             speech.say('Calling the front desk.');
             setEverloop(0, 25, 255, 0, 0.05);
             break;
