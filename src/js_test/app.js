@@ -76,27 +76,31 @@ updateSocket.on('message', function(wakeword_buffer) {
         if (success) {
             foodOrder = '';
             setEverloop(10, 255, 0, 0, 0.1);
+            turnOffEverloopDelayed();
         }
     } else {
         switch (true) {
             case /MARRIOTT CALL CONCIERGE.*/.test(str):
                 setEverloop(140, 255, 75, 0, 0.05);
                 speech.say('Calling concierge.');
+                turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT CALL( THE)* FRONT DESK.*/.test(str):
                 speech.say('Calling the front desk.');
                 setEverloop(0, 25, 255, 0, 0.05);
+                turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT CHECKOUT.*/.test(str):
                 speech.say('Checking out.');
                 setEverloop(0, 25, 255, 0, 0.05);
+                turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT( TURN)? OFF( THE)* LIGHTS.*/.test(str):
                 speech.say('Turning off the lights.');
-                setEverloop(0, 0, 0, 0, 0);
+                turnOffEverloop();
                 break;
 
             case /MARRIOTT DIM( THE)* LIGHTS.*/.test(str):
@@ -128,7 +132,7 @@ updateSocket.on('message', function(wakeword_buffer) {
             case /MARRIOTT (ORDER|REQUEST) TOWELS.*/.test(str):
                 speech.say('Ordering towels.');
                 setEverloop(255, 75, 255, 0, 0.05);
-                // Ask to charge to VISA or room
+                turnOffEverloopDelayed();
                 break;
 
             default:
@@ -140,6 +144,16 @@ updateSocket.on('message', function(wakeword_buffer) {
         }
     }
 });
+
+function turnOffEverloop() {
+    setEverloop(0, 0, 0, 0, 0);
+}
+
+function turnOffEverloopDelayed(delay = 1500) {
+    setTimeout(function() {
+        turnOffEverloop();
+    }, delay);
+}
 
 /**************************************
  * Everloop Ring LEDs handler
