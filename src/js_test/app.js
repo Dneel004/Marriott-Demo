@@ -59,7 +59,7 @@ updateSocket.on('message', function(wakeword_buffer) {
     console.log('==> WakeWord Reached:',wakeWordData.wake_word)
     var str = wakeWordData.wake_word;
 
-    if (foodOrder != '') {
+    if (foodOrder) {
         switch (true) {
             case /( TO)?( THE)?ROOM.*/.test(str):
                 // Process room payment
@@ -130,10 +130,9 @@ updateSocket.on('message', function(wakeword_buffer) {
 
             default:
                 // Marriott: sorry i didn't quite get that
-
-            if (foodOrder != '') {
-                speech.say('Would you like to charge your ' + foodOrder + ' to the room or VISA checkout?');
-            }
+        }
+        if (foodOrder) {
+            speech.say('Would you like to charge your ' + foodOrder + ' to the room or VISA checkout?');
         }
     }
 });
