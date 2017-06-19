@@ -135,6 +135,18 @@ updateSocket.on('message', function(wakeword_buffer) {
                 turnOffEverloopDelayed();
                 break;
 
+            case /MARRIOTT (I WANT|ORDER|REQUEST) PILLOWS.*/.test(str):
+                speech.say('Ordering pillows.');
+                setEverloop(255, 75, 255, 0, 0.05);
+                turnOffEverloopDelayed();
+                break;
+
+            case /MARRIOTT (I WANT|ORDER|REQUEST) SHEETS.*/.test(str):
+                speech.say('Ordering sheets.');
+                setEverloop(255, 75, 255, 0, 0.05);
+                turnOffEverloopDelayed();
+                break;
+
             default:
                 speech.say('Sorry, I didn\'t quite get that');
         }
