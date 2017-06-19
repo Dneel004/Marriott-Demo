@@ -1,0 +1,17 @@
+marriott
+order
+continental breakfast
+room service
+call
+concierge
+front desk
+turn
+on
+off
+dim
+the
+lights
+checkout
+request
+towels
+reserve a table at 5 pm at the restaurant
