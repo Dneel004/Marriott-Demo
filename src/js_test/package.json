@@ -4,6 +4,8 @@
     "protobufjs": "^5.0.1",
     "zmq": "*",
     "mic": "*",
-    "google-tts-api": "*"
+    "google-tts-api": "*",
+    "request": "*",
+    "crypto": "*"
   }
 }
