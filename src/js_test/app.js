@@ -129,7 +129,7 @@ updateSocket.on('message', function(wakeword_buffer) {
                 foodOrder = 'dinner';
                 break;
 
-            case /MARRIOTT (ORDER|REQUEST) TOWELS.*/.test(str):
+            case /MARRIOTT (I WANT|ORDER|REQUEST) TOWELS.*/.test(str):
                 speech.say('Ordering towels.');
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
