@@ -17,7 +17,7 @@ var errorSocket = zmq.socket('sub')
 errorSocket.connect('tcp://' + creator_ip + ':' + (creator_wakeword_base_port + 2))
 errorSocket.subscribe('')
 errorSocket.on('message', function(error_message) {
-  process.stdout.write('Received Wakeword error: ' + error_message.toString('utf8') + "\n")
+    process.stdout.write('Received Wakeword error: ' + error_message.toString('utf8') + "\n")
 });
 // ********** End error management.
 
@@ -26,21 +26,21 @@ errorSocket.on('message', function(error_message) {
  **************************************/
 
 function startWakeUpRecognition(){
-  console.log('<== config wakeword recognition..')
-  var wakeword_config = new matrixMalosBuilder.WakeWordParams;
-  wakeword_config.set_wake_word("MARRIOTT");
-  wakeword_config.set_lm_path("../../assets/commands.lm");
-  wakeword_config.set_dic_path("../../assets/commands.dic");
-  wakeword_config.set_channel(matrixMalosBuilder.WakeWordParams.MicChannel.channel8);
-  wakeword_config.set_enable_verbose(false)
-  sendConfigProto(wakeword_config);
+    console.log('<== config wakeword recognition..')
+    var wakeword_config = new matrixMalosBuilder.WakeWordParams;
+    wakeword_config.set_wake_word("MARRIOTT");
+    wakeword_config.set_lm_path("../../assets/commands.lm");
+    wakeword_config.set_dic_path("../../assets/commands.dic");
+    wakeword_config.set_channel(matrixMalosBuilder.WakeWordParams.MicChannel.channel8);
+    wakeword_config.set_enable_verbose(false)
+    sendConfigProto(wakeword_config);
 }
 
 function stopWakeUpRecognition(){
-  console.log('<== stop wakeword recognition..')
-  var wakeword_config = new matrixMalosBuilder.WakeWordParams;
-  wakeword_config.set_stop_recognition(true)
-  sendConfigProto(wakeword_config);
+    console.log('<== stop wakeword recognition..')
+    var wakeword_config = new matrixMalosBuilder.WakeWordParams;
+    wakeword_config.set_stop_recognition(true)
+    sendConfigProto(wakeword_config);
 }
 
 /**************************************
@@ -52,21 +52,21 @@ updateSocket.connect('tcp://' + creator_ip + ':' + (creator_wakeword_base_port +
 updateSocket.subscribe('')
 
 updateSocket.on('message', function(wakeword_buffer) {
-  var wakeWordData = new matrixMalosBuilder.WakeWordParams.decode(wakeword_buffer);
-  console.log('==> WakeWord Reached:',wakeWordData.wake_word)
+    var wakeWordData = new matrixMalosBuilder.WakeWordParams.decode(wakeword_buffer);
+    console.log('==> WakeWord Reached:',wakeWordData.wake_word)
 
     switch(wakeWordData.wake_word) {
-      case "MARRIOTT RING RED":
-        setEverloop(255, 0, 25, 0, 0.05)
-        break;
-      case "MARRIOTT RING BLUE":
-        setEverloop(0, 25, 255, 0, 0.05)
-        break;
-      case "MARRIOTT RING CLEAR":
-        setEverloop(0, 0, 0, 0, 0)
-        break;
-      default:
-        //Marriott: sorry i didnt quite get that
+        case "MARRIOTT RING RED":
+            setEverloop(255, 0, 25, 0, 0.05)
+            break;
+        case "MARRIOTT RING BLUE":
+            setEverloop(0, 25, 255, 0, 0.05)
+            break;
+        case "MARRIOTT RING CLEAR":
+            setEverloop(0, 0, 0, 0, 0)
+            break;
+        default:
+            // Marriott: sorry i didn't quite get that
     }
 });
 
@@ -81,12 +81,12 @@ function setEverloop(r, g, b, w, i) {
     var config = new matrixMalosBuilder.DriverConfig
     config.image = new matrixMalosBuilder.EverloopImage
     for (var j = 0; j < 35; ++j) {
-      var ledValue = new matrixMalosBuilder.LedValue;
-      ledValue.setRed(Math.round(r*i));
-      ledValue.setGreen(Math.round(g*i));
-      ledValue.setBlue(Math.round(b*i));
-      ledValue.setWhite(Math.round(w*i));
-      config.image.led.push(ledValue)
+        var ledValue = new matrixMalosBuilder.LedValue;
+        ledValue.setRed(Math.round(r*i));
+        ledValue.setGreen(Math.round(g*i));
+        ledValue.setBlue(Math.round(b*i));
+        ledValue.setWhite(Math.round(w*i));
+        config.image.led.push(ledValue)
     }
     ledsConfigSocket.send(config.encode().toBuffer());
 }
@@ -96,9 +96,9 @@ function setEverloop(r, g, b, w, i) {
  **************************************/
 
 function sendConfigProto(cfg){
-  var config = new matrixMalosBuilder.DriverConfig
-  config.set_wakeword(cfg)
-  configSocket.send(config.encode().toBuffer())
+    var config = new matrixMalosBuilder.DriverConfig
+    config.set_wakeword(cfg)
+    configSocket.send(config.encode().toBuffer())
 }
 
 /**********************************************
