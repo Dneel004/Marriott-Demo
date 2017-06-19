@@ -74,6 +74,8 @@ updateSocket.on('message', function(wakeword_buffer) {
       case "MARRIOTT RING CLEAR":
         setEverloop(0, 0, 0, 0, 0) 
         break;
+      default:
+        //Marriott: sorry i didnt quite get that 
     }
 });
 
