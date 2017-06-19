@@ -141,7 +141,7 @@ updateSocket.on('message', function(wakeword_buffer) {
                 turnOffEverloopDelayed();
                 break;
 
-            case /MARRIOTT ((I )?WANT|ORDER|REQUEST) (BED)? SHEETS.*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST)( BED)? SHEETS.*/.test(str):
                 speech.say('Ordering bed sheets.');
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
