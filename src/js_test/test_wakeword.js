@@ -37,9 +37,9 @@ errorSocket.on('message', function(error_message) {
 function startWakeUpRecognition(){
   console.log('<== config wakeword recognition..')
   var wakeword_config = new matrixMalosBuilder.WakeWordParams;
-  wakeword_config.set_wake_word("MIA");
-  wakeword_config.set_lm_path("/home/pi/assets/9854.lm");
-  wakeword_config.set_dic_path("/home/pi/assets/9854.dic");
+  wakeword_config.set_wake_word("MARRIOTT");
+  wakeword_config.set_lm_path("/home/pi/Marriott-Demo/assets/7719.lm");
+  wakeword_config.set_dic_path("/home/pi/Marriott-Demo/assets/7719.dic");
   wakeword_config.set_channel(matrixMalosBuilder.WakeWordParams.MicChannel.channel8);
   wakeword_config.set_enable_verbose(false)
   sendConfigProto(wakeword_config);
@@ -65,19 +65,13 @@ updateSocket.on('message', function(wakeword_buffer) {
   console.log('==> WakeWord Reached:',wakeWordData.wake_word)
     
     switch(wakeWordData.wake_word) {
-      case "MIA RING RED":
+      case "MARRIOTT RING RED":
         setEverloop(255, 0, 25, 0, 0.05)
         break;
-      case "MIA RING BLUE":
+      case "MARRIOTT RING BLUE":
         setEverloop(0, 25, 255, 0, 0.05) 
         break;
-      case "MIA RING GREEN":
-        setEverloop(0, 255, 100, 0, 0.05) 
-        break;
-      case "MIA RING ORANGE":
-        setEverloop(255, 77, 0, 0, 0.05) 
-        break;
-      case "MIA RING CLEAR":
+      case "MARRIOTT RING CLEAR":
         setEverloop(0, 0, 0, 0, 0) 
         break;
     }
