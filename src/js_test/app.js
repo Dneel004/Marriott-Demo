@@ -73,7 +73,7 @@ updateSocket.on('message', function(wakeword_buffer) {
             setEverloop(0, 25, 255, 0, 0.05);
             break;
 
-        case /MARRIOTT TURN OFF( THE)* LIGHTS?.*/.test(str):
+        case /MARRIOTT( TURN)? OFF( THE)* LIGHTS?.*/.test(str):
             speech.say('Turning off the lights.');
             setEverloop(0, 0, 0, 0, 0);
             break;
@@ -83,7 +83,7 @@ updateSocket.on('message', function(wakeword_buffer) {
             setEverloop(127, 127, 127, 127, 0.01);
             break;
 
-        case /MARRIOTT TURN ON( THE)* LIGHTS?.*/.test(str):
+        case /MARRIOTT( TURN)? ON( THE)* LIGHTS?.*/.test(str):
             speech.say('Turning on the lights.');
             setEverloop(255, 255, 255, 255, 1);
             break;
