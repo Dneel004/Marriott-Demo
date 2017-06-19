@@ -113,35 +113,35 @@ updateSocket.on('message', function(wakeword_buffer) {
                 setEverloop(255, 255, 255, 255, 1);
                 break;
 
-            case /MARRIOTT (I WANT|ORDER|REQUEST) BREAKFAST.*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST) BREAKFAST.*/.test(str):
                 foodOrder = 'breakfast';
                 break;
 
-            case /MARRIOTT (I WANT|ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST.*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST.*/.test(str):
                 foodOrder = 'continental breakfast';
                 break;
 
-            case /MARRIOTT (I WANT|ORDER|REQUEST) (LUNCH|LIGHTS).*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST) (LUNCH|LIGHTS).*/.test(str):
                 foodOrder = 'lunch';
                 break;
 
-            case /MARRIOTT (I WANT|ORDER|REQUEST) (DINNER|DIM).*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST) (DINNER|DIM).*/.test(str):
                 foodOrder = 'dinner';
                 break;
 
-            case /MARRIOTT (I WANT|ORDER|REQUEST) TOWELS.*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST) TOWELS.*/.test(str):
                 speech.say('Ordering towels.');
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
                 break;
 
-            case /MARRIOTT (I WANT|ORDER|REQUEST) PILLOWS.*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST) PILLOWS.*/.test(str):
                 speech.say('Ordering pillows.');
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
                 break;
 
-            case /MARRIOTT (I WANT|ORDER|REQUEST) (BED)? SHEETS.*/.test(str):
+            case /MARRIOTT ((I )?WANT|ORDER|REQUEST) (BED)? SHEETS.*/.test(str):
                 speech.say('Ordering bed sheets.');
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
