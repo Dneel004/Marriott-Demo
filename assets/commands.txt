@@ -4,7 +4,7 @@ continental
 breakfast
 lunch
 dinner
-room service
+room
 call
 concierge
 front desk
@@ -17,29 +17,12 @@ lights
 checkout
 request
 towels
-reserve
 a
-table
-at
-1
-2
-3
-4
-5
-6
-7
-8
-9
-am
-pm
-restaurant
-wake
-me
-up
 room
-visa checkout
+visa
 to
 pillows
 sheets
 I
 want
+bed

@@ -1,4 +1,4 @@
-Language model created by QuickLM on Mon Jun 19 18:14:40 EDT 2017
+Language model created by QuickLM on Mon Jun 19 19:43:21 EDT 2017
 Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
 
 The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
@@ -7,120 +7,75 @@ The code that was used to produce this language model is available in Open Sourc
 Please visit http://www.speech.cs.cmu.edu/tools/ for more information
 
 The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
-This model based on a corpus of 45 sentences and 48 words
+This model based on a corpus of 28 sentences and 30 words
 
 \data\
-ngram 1=48
-ngram 2=91
-ngram 3=48
+ngram 1=30
+ngram 2=55
+ngram 3=28
 
 \1-grams:
--2.4409 1 -0.2237
--2.4409 2 -0.2237
--2.4409 3 -0.2237
--2.4409 4 -0.2237
--2.4409 5 -0.2237
--2.4409 6 -0.2237
--2.4409 7 -0.2237
--2.4409 8 -0.2237
--2.4409 9 -0.2237
--0.7877 </s> -0.3010
--0.7877 <s> -0.2218
--2.4409 A -0.2237
--2.4409 AM -0.2237
--2.4409 AT -0.2237
--2.4409 BREAKFAST -0.2237
--2.4409 CALL -0.2237
--2.1399 CHECKOUT -0.2237
--2.4409 CONCIERGE -0.2237
--2.4409 CONTINENTAL -0.2237
--2.4409 DESK -0.2237
--2.4409 DIM -0.2237
--2.4409 DINNER -0.2237
--2.4409 FRONT -0.2995
--2.4409 I -0.2237
--2.4409 LIGHTS -0.2237
--2.4409 LUNCH -0.2237
--2.4409 MARRIOTT -0.2237
--2.4409 ME -0.2237
--2.4409 OFF -0.2237
--2.4409 ON -0.2237
--2.4409 ORDER -0.2237
--2.4409 PILLOWS -0.2237
--2.4409 PM -0.2237
--2.4409 REQUEST -0.2237
--2.4409 RESERVE -0.2237
--2.4409 RESTAURANT -0.2237
--2.1399 ROOM -0.2218
--2.4409 SERVICE -0.2237
--2.4409 SHEETS -0.2237
--2.4409 TABLE -0.2237
--2.4409 THE -0.2237
--2.4409 TO -0.2237
--2.4409 TOWELS -0.2237
--2.4409 TURN -0.2237
--2.4409 UP -0.2237
--2.4409 VISA -0.2979
--2.4409 WAKE -0.2237
--2.4409 WANT -0.2237
+-0.7833 </s> -0.3010
+-0.7833 <s> -0.2229
+-2.2304 A -0.2229
+-2.2304 BED -0.2229
+-2.2304 BREAKFAST -0.2229
+-2.2304 CALL -0.2229
+-2.2304 CHECKOUT -0.2229
+-2.2304 CONCIERGE -0.2229
+-2.2304 CONTINENTAL -0.2229
+-2.2304 DESK -0.2229
+-2.2304 DIM -0.2229
+-2.2304 DINNER -0.2229
+-2.2304 FRONT -0.2985
+-2.2304 I -0.2229
+-2.2304 LIGHTS -0.2229
+-2.2304 LUNCH -0.2229
+-2.2304 MARRIOTT -0.2229
+-2.2304 OFF -0.2229
+-2.2304 ON -0.2229
+-2.2304 ORDER -0.2229
+-2.2304 PILLOWS -0.2229
+-2.2304 REQUEST -0.2229
+-1.9294 ROOM -0.2229
+-2.2304 SHEETS -0.2229
+-2.2304 THE -0.2229
+-2.2304 TO -0.2229
+-2.2304 TOWELS -0.2229
+-2.2304 TURN -0.2229
+-2.2304 VISA -0.2229
+-2.2304 WANT -0.2229
 
 \2-grams:
--0.3010 1 </s> -0.3010
--0.3010 2 </s> -0.3010
--0.3010 3 </s> -0.3010
--0.3010 4 </s> -0.3010
--0.3010 5 </s> -0.3010
--0.3010 6 </s> -0.3010
--0.3010 7 </s> -0.3010
--0.3010 8 </s> -0.3010
--0.3010 9 </s> -0.3010
--1.9542 <s> 1 0.0000
--1.9542 <s> 2 0.0000
--1.9542 <s> 3 0.0000
--1.9542 <s> 4 0.0000
--1.9542 <s> 5 0.0000
--1.9542 <s> 6 0.0000
--1.9542 <s> 7 0.0000
--1.9542 <s> 8 0.0000
--1.9542 <s> 9 0.0000
--1.9542 <s> A 0.0000
--1.9542 <s> AM 0.0000
--1.9542 <s> AT 0.0000
--1.9542 <s> BREAKFAST 0.0000
--1.9542 <s> CALL 0.0000
--1.9542 <s> CHECKOUT 0.0000
--1.9542 <s> CONCIERGE 0.0000
--1.9542 <s> CONTINENTAL 0.0000
--1.9542 <s> DIM 0.0000
--1.9542 <s> DINNER 0.0000
--1.9542 <s> FRONT 0.0000
--1.9542 <s> I 0.0000
--1.9542 <s> LIGHTS 0.0000
--1.9542 <s> LUNCH 0.0000
--1.9542 <s> MARRIOTT 0.0000
--1.9542 <s> ME 0.0000
--1.9542 <s> OFF 0.0000
--1.9542 <s> ON 0.0000
--1.9542 <s> ORDER 0.0000
--1.9542 <s> PILLOWS 0.0000
--1.9542 <s> PM 0.0000
--1.9542 <s> REQUEST 0.0000
--1.9542 <s> RESERVE 0.0000
--1.9542 <s> RESTAURANT 0.0000
--1.6532 <s> ROOM 0.0000
--1.9542 <s> SHEETS 0.0000
--1.9542 <s> TABLE 0.0000
--1.9542 <s> THE 0.0000
--1.9542 <s> TO 0.0000
--1.9542 <s> TOWELS 0.0000
--1.9542 <s> TURN 0.0000
--1.9542 <s> UP 0.0000
--1.9542 <s> VISA 0.0000
--1.9542 <s> WAKE 0.0000
--1.9542 <s> WANT 0.0000
+-1.7482 <s> A 0.0000
+-1.7482 <s> BED 0.0000
+-1.7482 <s> BREAKFAST 0.0000
+-1.7482 <s> CALL 0.0000
+-1.7482 <s> CHECKOUT 0.0000
+-1.7482 <s> CONCIERGE 0.0000
+-1.7482 <s> CONTINENTAL 0.0000
+-1.7482 <s> DIM 0.0000
+-1.7482 <s> DINNER 0.0000
+-1.7482 <s> FRONT 0.0000
+-1.7482 <s> I 0.0000
+-1.7482 <s> LIGHTS 0.0000
+-1.7482 <s> LUNCH 0.0000
+-1.7482 <s> MARRIOTT 0.0000
+-1.7482 <s> OFF 0.0000
+-1.7482 <s> ON 0.0000
+-1.7482 <s> ORDER 0.0000
+-1.7482 <s> PILLOWS 0.0000
+-1.7482 <s> REQUEST 0.0000
+-1.4472 <s> ROOM 0.0000
+-1.7482 <s> SHEETS 0.0000
+-1.7482 <s> THE 0.0000
+-1.7482 <s> TO 0.0000
+-1.7482 <s> TOWELS 0.0000
+-1.7482 <s> TURN 0.0000
+-1.7482 <s> VISA 0.0000
+-1.7482 <s> WANT 0.0000
 -0.3010 A </s> -0.3010
--0.3010 AM </s> -0.3010
--0.3010 AT </s> -0.3010
+-0.3010 BED </s> -0.3010
 -0.3010 BREAKFAST </s> -0.3010
 -0.3010 CALL </s> -0.3010
 -0.3010 CHECKOUT </s> -0.3010
@@ -134,42 +89,23 @@ ngram 3=48
 -0.3010 LIGHTS </s> -0.3010
 -0.3010 LUNCH </s> -0.3010
 -0.3010 MARRIOTT </s> -0.3010
--0.3010 ME </s> -0.3010
 -0.3010 OFF </s> -0.3010
 -0.3010 ON </s> -0.3010
 -0.3010 ORDER </s> -0.3010
 -0.3010 PILLOWS </s> -0.3010
--0.3010 PM </s> -0.3010
 -0.3010 REQUEST </s> -0.3010
--0.3010 RESERVE </s> -0.3010
--0.3010 RESTAURANT </s> -0.3010
--0.6021 ROOM </s> -0.3010
--0.6021 ROOM SERVICE 0.0000
--0.3010 SERVICE </s> -0.3010
+-0.3010 ROOM </s> -0.3010
 -0.3010 SHEETS </s> -0.3010
--0.3010 TABLE </s> -0.3010
 -0.3010 THE </s> -0.3010
 -0.3010 TO </s> -0.3010
 -0.3010 TOWELS </s> -0.3010
 -0.3010 TURN </s> -0.3010
--0.3010 UP </s> -0.3010
--0.3010 VISA CHECKOUT 0.0000
--0.3010 WAKE </s> -0.3010
+-0.3010 VISA </s> -0.3010
 -0.3010 WANT </s> -0.3010
 
 \3-grams:
--0.3010 <s> 1 </s>
--0.3010 <s> 2 </s>
--0.3010 <s> 3 </s>
--0.3010 <s> 4 </s>
--0.3010 <s> 5 </s>
--0.3010 <s> 6 </s>
--0.3010 <s> 7 </s>
--0.3010 <s> 8 </s>
--0.3010 <s> 9 </s>
 -0.3010 <s> A </s>
--0.3010 <s> AM </s>
--0.3010 <s> AT </s>
+-0.3010 <s> BED </s>
 -0.3010 <s> BREAKFAST </s>
 -0.3010 <s> CALL </s>
 -0.3010 <s> CHECKOUT </s>
@@ -182,29 +118,19 @@ ngram 3=48
 -0.3010 <s> LIGHTS </s>
 -0.3010 <s> LUNCH </s>
 -0.3010 <s> MARRIOTT </s>
--0.3010 <s> ME </s>
 -0.3010 <s> OFF </s>
 -0.3010 <s> ON </s>
 -0.3010 <s> ORDER </s>
 -0.3010 <s> PILLOWS </s>
--0.3010 <s> PM </s>
 -0.3010 <s> REQUEST </s>
--0.3010 <s> RESERVE </s>
--0.3010 <s> RESTAURANT </s>
--0.6021 <s> ROOM </s>
--0.6021 <s> ROOM SERVICE
+-0.3010 <s> ROOM </s>
 -0.3010 <s> SHEETS </s>
--0.3010 <s> TABLE </s>
 -0.3010 <s> THE </s>
 -0.3010 <s> TO </s>
 -0.3010 <s> TOWELS </s>
 -0.3010 <s> TURN </s>
--0.3010 <s> UP </s>
--0.3010 <s> VISA CHECKOUT
--0.3010 <s> WAKE </s>
+-0.3010 <s> VISA </s>
 -0.3010 <s> WANT </s>
 -0.3010 FRONT DESK </s>
--0.3010 ROOM SERVICE </s>
--0.3010 VISA CHECKOUT </s>
 
 \end\
