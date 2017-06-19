@@ -28,7 +28,7 @@ errorSocket.on('message', function(error_message) {
 function startWakeUpRecognition(){
     console.log('<== config wakeword recognition..')
     var wakeword_config = new matrixMalosBuilder.WakeWordParams;
-    var prefix = '../../assets/commands';
+    var prefix = '../../assets/7265';
     wakeword_config.set_wake_word("MARRIOTT");
     wakeword_config.set_lm_path(prefix + ".lm");
     wakeword_config.set_dic_path(prefix + ".dic");
