@@ -88,6 +88,36 @@ updateSocket.on('message', function(wakeword_buffer) {
             setEverloop(255, 255, 255, 255, 1);
             break;
 
+        case /MARRIOTT ORDER BREAKFAST/.test(str):
+            speech.say('Ordering breakfast.');
+            setEverloop(255, 204, 44, 0, 0.05);
+            // Ask to charge to VISA or room
+            break;
+
+        case /MARRIOTT (ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST/.test(str):
+            speech.say('Ordering the continental breakfast.');
+            setEverloop(255, 204, 44, 0, 0.05);
+            // Ask to charge to VISA or room
+            break;
+
+        case /MARRIOTT (ORDER|REQUEST) LUNCH/.test(str):
+            speech.say('Ordering lunch.');
+            setEverloop(255, 75, 44, 0, 0.05);
+            // Ask to charge to VISA or room
+            break;
+
+        case /MARRIOTT (ORDER|REQUEST) DINNER/.test(str):
+            speech.say('Ordering dinner.');
+            setEverloop(44, 149, 255, 0, 0.05);
+            // Ask to charge to VISA or room
+            break;
+
+        case /MARRIOTT (ORDER|REQUEST) TOWELS/.test(str):
+            speech.say('Ordering towels.');
+            setEverloop(255, 75, 255, 0, 0.05);
+            // Ask to charge to VISA or room
+            break;
+
         default:
             // Marriott: sorry i didn't quite get that
     }
