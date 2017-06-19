@@ -80,7 +80,7 @@ updateSocket.on('message', function(wakeword_buffer) {
 
         case /MARRIOTT DIM( THE)* LIGHTS?.*/.test(str):
             speech.say('Dimming the lights.');
-            setEverloop(127, 127, 127, 127, 0.5);
+            setEverloop(127, 127, 127, 127, 0.01);
             break;
 
         case /MARRIOTT TURN ON( THE)* LIGHTS?.*/.test(str):
