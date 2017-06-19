@@ -131,7 +131,7 @@ updateSocket.on('message', function(wakeword_buffer) {
                 break;
 
             default:
-                // Marriott: sorry i didn't quite get that
+                speech.say('Sorry, I didn\'t quite get that');
         }
         if (foodOrder) {
             speech.say('Would you like to charge your ' + foodOrder + ' to the room or VISA checkout?');
