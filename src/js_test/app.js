@@ -60,21 +60,22 @@ updateSocket.on('message', function(wakeword_buffer) {
     var str = wakeWordData.wake_word;
 
     if (foodOrder) {
+        var success = false;
         switch (true) {
             case /( TO)?( THE)?ROOM.*/.test(str):
-                // Process room payment
-                setEverloop(0, 25, 255, 0, 0.05);
+                success = true;
                 speech.say('Charging your ' + foodOrder + ' to your room.');
-                foodOrder = '';
                 break;
             case /VISA( CHECKOUT)?.*/.test(str):
-                // Process VISA checkout
-                setEverloop(140, 255, 75, 0, 0.05);
+                success = true;
                 speech.say('Charging your ' + foodOrder + ' to VISA checkout.');
-                foodOrder = '';
                 break;
             default:
                 speech.say('Sorry, I didn\'t quite get that');
+        }
+        if (success) {
+            foodOrder = '';
+            setEverloop(10, 255, 0, 0, 0.1);
         }
     } else {
         switch (true) {
@@ -135,6 +136,7 @@ updateSocket.on('message', function(wakeword_buffer) {
         }
         if (foodOrder) {
             speech.say('Would you like to charge your ' + foodOrder + ' to the room or VISA checkout?');
+            setEverloop(0, 110, 255, 0, 0.1);
         }
     }
 });
