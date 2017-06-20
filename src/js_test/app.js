@@ -231,4 +231,13 @@ function sendConfigProto(cfg){
  ****************** MAIN **********************
  **********************************************/
 
+setEverloop(255, 0, 0, 0, 1);
+setTimeout(function() {
+    setEverloop(0, 255, 0, 0, 1);
+    setTimeout(function() {
+        setEverloop(0, 0, 255, 0, 1);
+        turnOffEverloopDelayed(800);
+    }, 800);
+}, 800);
+
 startWakeUpRecognition();
