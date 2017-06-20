@@ -116,30 +116,30 @@ updateSocket.on('message', function(wakeword_buffer) {
                 break;
 
             case /MARRIOTT CALL( THE)* FRONT DESK.*/.test(str):
-                play(audio.callDesk);
                 setEverloop(0, 25, 255, 0, 0.05);
+                play(audio.callDesk);
                 turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT CHECKOUT.*/.test(str):
-                play(audio.checkout);
                 setEverloop(0, 25, 255, 0, 0.05);
+                play(audio.checkout);
                 turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT(( TURN)? OFF( THE)* LIGHTS| LIGHTS OFF).*/.test(str):
-                setLights('off');
                 turnOffEverloop();
+                setLights('off');
                 break;
 
             case /MARRIOTT DIM( THE)* LIGHTS.*/.test(str):
-                setLights('dim');
                 setEverloop(127, 127, 127, 127, 0.01);
+                setLights('dim');
                 break;
 
             case /MARRIOTT(( TURN)? ON( THE)* LIGHTS| LIGHTS ON).*/.test(str):
-                setLights('on');
                 setEverloop(255, 255, 255, 255, 1);
+                setLights('on');
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST) BREAKFAST.*/.test(str):
@@ -159,29 +159,29 @@ updateSocket.on('message', function(wakeword_buffer) {
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST) TOWELS.*/.test(str):
-                play(audio.orderTowels);
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
+                play(audio.orderTowels);
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST) PILLOWS.*/.test(str):
-                play(audio.orderPillows);
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
+                play(audio.orderPillows);
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST)( BED)? SHEETS.*/.test(str):
-                play(audio.orderSheets);
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
+                play(audio.orderSheets);
                 break;
 
             default:
                 play(audio.didntCatch);
         }
         if (foodOrder) {
-            askChargeFood(foodOrder);
             setEverloop(0, 110, 255, 0, 0.1);
+            askChargeFood(foodOrder);
         }
     }
 });
