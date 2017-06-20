@@ -1,4 +1,4 @@
-"use strict"; 
+"use strict";
 
 var fs = require('fs');
 var path = require('path');
@@ -69,7 +69,7 @@ function deleteFile(file){
 };
 
 function say(phrase, language='en-GB'){
-  
+
   let dest = path.resolve(__dirname, 'say.mp3'); // file destination
   // start
   googleTTS(phrase, language)
@@ -90,5 +90,6 @@ function say(phrase, language='en-GB'){
   });
 };
 module.exports = {
-  say: say
+  say: say,
+  playFile: playFile
 }

@@ -3,6 +3,9 @@ var zmq      = require('zmq');
 var speech   = require('./lib/google-say.js');
 var visa     = require('./lib/visa_pay.js');
 
+var assetsPath = '/home/pi/Marriott-Demo/assets';
+var audioPath = assetsPath + '/audio';
+
 var creator_ip = '127.0.0.1';
 var creator_wakeword_base_port = 60001;
 var creator_everloop_base_port = 20013 + 8 // port for Everloop driver.
@@ -28,7 +31,7 @@ errorSocket.on('message', function(error_message) {
 function startWakeUpRecognition(){
     console.log('<== config wakeword recognition..')
     var wakeword_config = new matrixMalosBuilder.WakeWordParams;
-    var prefix = '/home/pi/Marriott-Demo/assets/commands';
+    var prefix = assetsPath + '/commands';
     wakeword_config.set_wake_word("MARRIOTT");
     wakeword_config.set_lm_path(prefix + ".lm");
     wakeword_config.set_dic_path(prefix + ".dic");
@@ -54,6 +57,32 @@ updateSocket.subscribe('')
 
 var foodOrder = '';
 
+var audio = {
+    checkout: 'checkout',
+    callDesk: 'call_desk',
+    callConcierge: 'call_concierge',
+    didntCatch: 'didnt_catch',
+    orderTowels: 'order_towels',
+    orderSheets: 'order_sheets',
+    orderPillows: 'order_pillows'
+};
+
+function setLights(status) {
+    play('lights_' + status);
+}
+
+function askChargeFood(food) {
+    play('ask_charge_' + food);
+}
+
+function chargeFood(food) {
+    play('charge_' + food);
+}
+
+function play(audioFile) {
+    speech.playFile(audioPath + '/' + audioFile + '.mp3');
+}
+
 updateSocket.on('message', function(wakeword_buffer) {
     var wakeWordData = new matrixMalosBuilder.WakeWordParams.decode(wakeword_buffer);
     console.log('==> WakeWord Reached:',wakeWordData.wake_word)
@@ -64,14 +93,14 @@ updateSocket.on('message', function(wakeword_buffer) {
         switch (true) {
             case /( TO)?( THE)?ROOM.*/.test(str):
                 success = true;
-                speech.say('Charging your ' + foodOrder + ' to your room.');
+                chargeFood(foodOrder + "_room");
                 break;
             case /VISA( CHECKOUT)?.*/.test(str):
                 success = true;
-                speech.say('Charging your ' + foodOrder + ' to VISA checkout.');
+                chargeFood(foodOrder + "_visa");
                 break;
             default:
-                speech.say('Sorry, I didn\'t quite get that');
+                play(audio.didntCatch);
         }
         if (success) {
             foodOrder = '';
@@ -82,34 +111,34 @@ updateSocket.on('message', function(wakeword_buffer) {
         switch (true) {
             case /MARRIOTT CALL CONCIERGE.*/.test(str):
                 setEverloop(140, 255, 75, 0, 0.05);
-                speech.say('Calling concierge.');
+                play(audio.callConcierge);
                 turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT CALL( THE)* FRONT DESK.*/.test(str):
-                speech.say('Calling the front desk.');
+                play(audio.callDesk);
                 setEverloop(0, 25, 255, 0, 0.05);
                 turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT CHECKOUT.*/.test(str):
-                speech.say('Checking out.');
+                play(audio.checkout);
                 setEverloop(0, 25, 255, 0, 0.05);
                 turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT(( TURN)? OFF( THE)* LIGHTS| LIGHTS OFF).*/.test(str):
-                speech.say('Turning off the lights.');
+                setLights('off');
                 turnOffEverloop();
                 break;
 
             case /MARRIOTT DIM( THE)* LIGHTS.*/.test(str):
-                speech.say('Dimming the lights.');
+                setLights('dim');
                 setEverloop(127, 127, 127, 127, 0.01);
                 break;
 
             case /MARRIOTT(( TURN)? ON( THE)* LIGHTS| LIGHTS ON).*/.test(str):
-                speech.say('Turning on the lights.');
+                setLights('on');
                 setEverloop(255, 255, 255, 255, 1);
                 break;
 
@@ -118,7 +147,7 @@ updateSocket.on('message', function(wakeword_buffer) {
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST)( THE)* CONTINENTAL BREAKFAST.*/.test(str):
-                foodOrder = 'continental breakfast';
+                foodOrder = 'continental_breakfast';
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST) (LUNCH|LIGHTS).*/.test(str):
@@ -130,28 +159,28 @@ updateSocket.on('message', function(wakeword_buffer) {
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST) TOWELS.*/.test(str):
-                speech.say('Ordering towels.');
+                play(audio.orderTowels);
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST) PILLOWS.*/.test(str):
-                speech.say('Ordering pillows.');
+                play(audio.orderPillows);
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
                 break;
 
             case /MARRIOTT ((I )?WANT|ORDER|REQUEST)( BED)? SHEETS.*/.test(str):
-                speech.say('Ordering bed sheets.');
+                play(audio.orderSheets);
                 setEverloop(255, 75, 255, 0, 0.05);
                 turnOffEverloopDelayed();
                 break;
 
             default:
-                speech.say('Sorry, I didn\'t quite get that');
+                play(audio.didntCatch);
         }
         if (foodOrder) {
-            speech.say('Would you like to charge your ' + foodOrder + ' to the room or VISA checkout?');
+            askChargeFood(foodOrder);
             setEverloop(0, 110, 255, 0, 0.1);
         }
     }
